@@ -1,3 +1,5 @@
+'use strict';
+
 // Load dependencies
 const util    = require('util'),
       winston = require('winston'),
