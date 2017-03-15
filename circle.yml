@@ -1,12 +1,9 @@
 machine:
-  node:
-    version: 6.9.1
   services:
     - docker
 
 test:
   override:
-    - docker-compose version
     - docker-compose -f compose-test-ci.yml run test
 
 deployment:
