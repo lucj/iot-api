@@ -1,0 +1,24 @@
+machine:
+  node:
+    version: 6.9.1
+  services:
+    - docker
+
+dependencies:
+  override:
+    - npm install
+
+test:
+  override:
+    - docker-compose version
+    - docker-compose -f compose-test.yml run test
+
+deployment:
+  hub:
+    branch: [ master ]
+    commands:
+      - docker build --rm=false -t lucj/iot-api:$CIRCLE_BRANCH .
+      - docker tag lucj/iot-api:$CIRCLE_BRANCH lucj/iot-api:$CIRCLE_SHA1
+      - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+      - docker push lucj/iot-api:$CIRCLE_BRANCH
+      - docker push lucj/iot-api:$CIRCLE_SHA1
