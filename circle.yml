@@ -4,14 +4,10 @@ machine:
   services:
     - docker
 
-dependencies:
-  override:
-    - npm install
-
 test:
   override:
     - docker-compose version
-    - docker-compose -f compose-test.yml run test
+    - docker-compose -f compose-test-ci.yml run test
 
 deployment:
   hub:
