@@ -1,3 +1,5 @@
+'use strict';
+
 // Load dependencies
 const express    = require('express'),
       Influx     = require('influx'),
