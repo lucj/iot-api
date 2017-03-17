@@ -12,7 +12,7 @@ let app = module.exports = express();
 // Create a client towards InfluxDB
 let influx = new Influx.InfluxDB({
    host: process.env.INFLUXDB_HOST || "db",
-   database: 'iot'
+   database: process.env.INFLUXDB_DATABASE || 'iot'
 });
 
 // Body parser configuration
