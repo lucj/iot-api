@@ -3,7 +3,6 @@ db:
 
 sut:
   build: .
-  dockerfile: Dockerfile.test
   command: /bin/sh -c 'curl -i -XPOST http://db:8086/query --data-urlencode "q=CREATE DATABASE iot" && npm test'
   links:
     - db
